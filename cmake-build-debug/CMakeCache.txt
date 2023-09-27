@@ -572,6 +572,8 @@ _Python3_EXECUTABLE:INTERNAL=C:/msys64/ucrt64/bin/python3.10.exe
 //Python3 Properties
 _Python3_INTERPRETER_PROPERTIES:INTERNAL=Python;3;10;11;64;;cp310-mingw_x86_64_ucrt;;C:\msys64\ucrt64\lib\python3.10;C:\msys64\ucrt64\lib\python3.10;C:\msys64\ucrt64\lib\python3.10\site-packages;C:\msys64\ucrt64\lib\python3.10\site-packages
 _Python3_INTERPRETER_SIGNATURE:INTERNAL=e70ac7c7b8d5851487f406f413a31390
+//Interpreter reason failure
+_Python3_Interpreter_REASON_FAILURE:INTERNAL=
 //NumPy reason failure
 _Python3_NumPy_REASON_FAILURE:INTERNAL=
 cmake_package_name:INTERNAL=GTest

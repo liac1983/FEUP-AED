@@ -24,7 +24,7 @@ TEST(test_4, examples) {
     EXPECT_EQ(4, FunWithComplexity::river({5,10,12,10,9,14,5,7,9,11,3,3}, 4, 10));
 }
 
-/*
+
 TEST(test_4, others_small) {
     int t, k;
 
@@ -36,9 +36,9 @@ TEST(test_4, others_small) {
     vector<int> v3 = readIntVectorAnd2Int("river/input03.txt", t, k);
     EXPECT_EQ(readInt("river/output03.txt"), FunWithComplexity::river(v3, t, k));
 }
-*/
 
-/*
+
+
 TEST(test_4, others_large) {
     int t, k;
 
@@ -48,7 +48,7 @@ TEST(test_4, others_large) {
     vector<int> v2 = readIntVectorAnd2Int("river/input09.txt", t, k);
     EXPECT_EQ(readInt("river/output09.txt"), FunWithComplexity::river(v2, t, k));
 }
-*/
+
 
 
 //=============================================================================
@@ -66,7 +66,7 @@ TEST(test_5, examples) {
     EXPECT_EQ(p3, FunWithComplexity::spiral(3));
 }
 
-/*
+
 TEST(test_5, others_small) {
     cout << "  . Other examples - small" << endl;
     pair<int, int> p1 = {-1, 1};
@@ -78,9 +78,9 @@ TEST(test_5, others_small) {
     pair<int, int> p4 = {-11, 7};
     EXPECT_EQ(p4, FunWithComplexity::spiral(503));
 }
-*/
 
-/*
+
+
 TEST(test_5, others_large) {
     cout << "  . Other examples - big" << endl;
     pair<int, int> p1 = {499, 499};
@@ -88,7 +88,7 @@ TEST(test_5, others_large) {
     pair<int, int> p2 = {1682, 15811};
     EXPECT_EQ(p2, FunWithComplexity::spiral(1000000000));
 }
-*/
+
 
 
 //=============================================================================

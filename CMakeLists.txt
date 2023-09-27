@@ -7,6 +7,8 @@ add_subdirectory(lib/googletest)
 include_directories(lib/googletest/googletest/include)
 include_directories(lib/googletest/googlemock/include)
 
-add_executable(aed2324_p01 main.cpp Tests/tests.cpp Tests/funWithCycles.cpp)
+add_executable(aed2324_p01 main.cpp Tests/tests.cpp Tests/funWithCycles.cpp
+        aed2324_p02/Tests/funWithComplexity.cpp
+        aed2324_p02/Tests/tests.cpp)
 
 target_link_libraries(aed2324_p01 gtest gtest_main)
