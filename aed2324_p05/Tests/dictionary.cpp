@@ -37,7 +37,7 @@ void Dictionary::addWord(WordMean wm)  {
 //=============================================================================
 //TODO
 bool WordMean::operator< (const WordMean& wm2) const {
-     return true;
+     return word<wm2.word;
 }
 
 //=============================================================================
@@ -45,13 +45,26 @@ bool WordMean::operator< (const WordMean& wm2) const {
 //=============================================================================
 //TODO
 void Dictionary::readFile(ifstream &f) {
+    string w, m;
+    while(!f.eof()) {
+        getline(f,w);
+        getline(f,m);
+        WordMean p(w,m);
+        words.insert(p);
+
+    }
 }
+
 
 //=============================================================================
 // Subexercise 1.2: Print Dictionary
 //=============================================================================
 //TODO
 void Dictionary::print() const {
+    for (const WordMean &wm : words) {
+        cout << wm.getWord() << endl;
+        cout << wm.getMeaning() << endl;
+    }
 }
 
 //=============================================================================
@@ -59,13 +72,52 @@ void Dictionary::print() const {
 //=============================================================================
 //TODO
 string Dictionary::consult(string w1, WordMean& previous, WordMean& next) const {
-    return "";
+    previous = WordMean("", "");
+    next = WordMean("", "");
+
+    // Procura por w1 no dicionário
+    set<WordMean>::const_iterator it = words.find(WordMean(w1, ""));
+    if (it != words.end()) {
+        // Palavra w1 encontrada, obtenha seu significado
+        return it->getMeaning();
+    } else {
+        // A palavra w1 não foi encontrada, procure as palavras antes e depois
+        it = words.lower_bound(WordMean(w1, ""));
+        if (it != words.begin()) {
+            --it;
+            previous = *it;
+        }
+        it = words.upper_bound(WordMean(w1, ""));
+        if (it != words.end()) {
+            next = *it;
+        }
+
+        return "word not found";
+    }
 }
+
 
 //=============================================================================
 // Subexercise 1.4: Update Dictionary
 //=============================================================================
 //TODO
 bool Dictionary::update(string w1, string m1) {
-    return true;
+    WordMean wordToUpdate(w1, m1);
+
+    // Tente encontrar a palavra no dicionário
+    set<WordMean>::iterator it = words.find(wordToUpdate);
+
+    if (it != words.end()) {
+        // A palavra já existe, remova-a
+        words.erase(it);
+
+        // Adicione a nova palavra com o significado atualizado
+        words.insert(wordToUpdate);
+
+        return true;
+    } else {
+        // A palavra não existe, adicione-a ao dicionário
+        words.insert(wordToUpdate);
+        return false;
+    }
 }
