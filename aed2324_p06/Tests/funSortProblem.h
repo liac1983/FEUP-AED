@@ -15,6 +15,9 @@ public:
     static int minDifference(const vector<unsigned> &values, unsigned nc);
     static unsigned numInversions(vector<int> v);
     static void nutsBolts(vector<Piece> &nuts, vector<Piece> &bolds);
+private:
+    static unsigned mergeAndCountInversions(std::vector<int>& v, int low, int mid, int high);
+    static unsigned mergeSort(std::vector<int>& v, int low, int high);
 };
 
 #endif

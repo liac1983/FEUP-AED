@@ -1,7 +1,7 @@
 # ninja log v5
 1	1735	7174306735444320	CMakeFiles/aed2324_p02.dir/main.cpp.obj	85aab7363eef4440
 484	3203	7174306750136349	lib/benchmark/src/CMakeFiles/benchmark.dir/benchmark_api_internal.cc.obj	b3cf2348dee22c31
-7	1213	7174434086255932	CMakeFiles/aed2324_p02.dir/Tests/funWithComplexity.cpp.obj	8a4fa2ece16312da
+12	1417	7175298397857412	CMakeFiles/aed2324_p02.dir/Tests/funWithComplexity.cpp.obj	8a4fa2ece16312da
 1738	4414	7174306762221845	lib/benchmark/src/CMakeFiles/benchmark.dir/console_reporter.cc.obj	35b33dfd9fafa183
 430	7148	7174306789584177	lib/benchmark/src/CMakeFiles/benchmark.dir/benchmark_name.cc.obj	68d2c614ec70cd11
 348	4452	7174306762621823	lib/googletest/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.obj	d873a1c54f6a81e1
@@ -9,7 +9,7 @@
 7	2670	7174356459820391	CMakeFiles/aed2324_p02.dir/Tests/tests.cpp.obj	6dafef47e06fa160
 1064	5294	7174306771008190	lib/benchmark/src/CMakeFiles/benchmark.dir/benchmark_runner.cc.obj	3b286aa0eb65fe58
 756	6241	7174306780505533	lib/benchmark/src/CMakeFiles/benchmark.dir/commandlineflags.cc.obj	a2857d5e5cd36003
-1214	12699	7174434200788064	aed2324_p02.exe	8adfc2163bdba8b7
+1417	12251	7175298505865980	aed2324_p02.exe	8adfc2163bdba8b7
 821	7262	7174306790679495	lib/benchmark/src/CMakeFiles/benchmark.dir/complexity.cc.obj	d1e6e2bc0f38f4ac
 682	7460	7174306792706329	lib/benchmark/src/CMakeFiles/benchmark.dir/check.cc.obj	df71ea1d2c430bc
 888	7888	7174306796746708	lib/benchmark/src/CMakeFiles/benchmark.dir/colorprint.cc.obj	5aa44835a39a6e98
@@ -29,11 +29,4 @@
 254	6222	7174307116214776	lib/benchmark/src/CMakeFiles/benchmark.dir/perf_counters.cc.obj	aa0391483cf127bb
 6223	9134	7174307145301319	lib/benchmark/src/libbenchmark.a	72c15db1881abbef
 9135	9369	7174307147681838	lib/benchmark/src/libbenchmark_main.a	94076555865b3ff1
-8	1201	7175266146775776	CMakeFiles/aed2324_p02.dir/Tests/funWithComplexity.cpp.obj	8a4fa2ece16312da
-1202	12395	7175266258435352	aed2324_p02.exe	8adfc2163bdba8b7
-8	1358	7175267484712200	CMakeFiles/aed2324_p02.dir/Tests/funWithComplexity.cpp.obj	8a4fa2ece16312da
-1359	9873	7175267569645191	aed2324_p02.exe	8adfc2163bdba8b7
-28	1360	7175268225366474	CMakeFiles/aed2324_p02.dir/Tests/funWithComplexity.cpp.obj	8a4fa2ece16312da
-1361	11711	7175268328576075	aed2324_p02.exe	8adfc2163bdba8b7
-12	1417	7175298397857412	CMakeFiles/aed2324_p02.dir/Tests/funWithComplexity.cpp.obj	8a4fa2ece16312da
-1417	12251	7175298505865980	aed2324_p02.exe	8adfc2163bdba8b7
+17	3257	7214960839894011	CMakeFiles/aed2324_p02.dir/C_/Users/lara2/OneDrive/Documentos/FEUP-AED/aed2324_p06/Tests/tests.cpp.obj	c7f99c55b2b7ee17
