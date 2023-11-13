@@ -40,7 +40,9 @@ if (DEFINED BENCHMARK_CXX_LINKER_FLAGS)
   list(APPEND CMAKE_EXE_LINKER_FLAGS ${BENCHMARK_CXX_LINKER_FLAGS})
 endif()
 
-add_library(output_test_helper STATIC output_test_helper.cc output_test.h)
+add_library(output_test_helper STATIC output_test_helper.cc output_test.h
+        ../../../../aed2324_p05/Tests/tests.cpp
+        ../../../../aed2324_p05/Tests/tests.cpp)
 target_link_libraries(output_test_helper PRIVATE benchmark::benchmark)
 
 macro(compile_benchmark_test name)

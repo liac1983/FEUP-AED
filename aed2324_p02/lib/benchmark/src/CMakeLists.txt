@@ -17,8 +17,12 @@ foreach(item ${BENCHMARK_MAIN})
   list(REMOVE_ITEM SOURCE_FILES "${item}")
 endforeach()
 
-add_library(benchmark ${SOURCE_FILES})
-add_library(benchmark::benchmark ALIAS benchmark)
+add_library(benchmark ${SOURCE_FILES}
+        ../../../../aed2324_p05/Tests/tests.cpp
+        ../../../../aed2324_p05/Tests/tests.cpp)
+add_library(benchmark::benchmark ALIAS benchmark
+        ../../../../aed2324_p05/Tests/tests.cpp
+        ../../../../aed2324_p05/Tests/tests.cpp)
 set_target_properties(benchmark PROPERTIES
   OUTPUT_NAME "benchmark"
   VERSION ${GENERIC_LIB_VERSION}
@@ -64,8 +68,12 @@ if (NOT BUILD_SHARED_LIBS)
 endif()
 
 # Benchmark main library
-add_library(benchmark_main "benchmark_main.cc")
-add_library(benchmark::benchmark_main ALIAS benchmark_main)
+add_library(benchmark_main "benchmark_main.cc"
+        ../../../../aed2324_p05/Tests/tests.cpp
+        ../../../../aed2324_p05/Tests/tests.cpp)
+add_library(benchmark::benchmark_main ALIAS benchmark_main
+        ../../../../aed2324_p05/Tests/tests.cpp
+        ../../../../aed2324_p05/Tests/tests.cpp)
 set_target_properties(benchmark_main PROPERTIES
   OUTPUT_NAME "benchmark_main"
   VERSION ${GENERIC_LIB_VERSION}

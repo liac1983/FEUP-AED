@@ -330,10 +330,18 @@ if (BENCHMARK_ENABLE_TESTING)
       include(GoogleTest)
     else()
       find_package(GTest CONFIG REQUIRED)
-      add_library(gtest ALIAS GTest::gtest)
-      add_library(gtest_main ALIAS GTest::gtest_main)
-      add_library(gmock ALIAS GTest::gmock)
-      add_library(gmock_main ALIAS GTest::gmock_main)
+      add_library(gtest ALIAS GTest::gtest
+              ../../../aed2324_p05/Tests/tests.cpp
+              ../../../aed2324_p05/Tests/tests.cpp)
+      add_library(gtest_main ALIAS GTest::gtest_main
+              ../../../aed2324_p05/Tests/tests.cpp
+              ../../../aed2324_p05/Tests/tests.cpp)
+      add_library(gmock ALIAS GTest::gmock
+              ../../../aed2324_p05/Tests/tests.cpp
+              ../../../aed2324_p05/Tests/tests.cpp)
+      add_library(gmock_main ALIAS GTest::gmock_main
+              ../../../aed2324_p05/Tests/tests.cpp
+              ../../../aed2324_p05/Tests/tests.cpp)
     endif()
   endif()
   add_subdirectory(test)
