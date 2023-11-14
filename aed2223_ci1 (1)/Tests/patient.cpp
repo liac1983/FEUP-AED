@@ -19,5 +19,8 @@ int Patient::getLastConsultationYear() const {
 
 //TODO
 bool Patient::operator<(const Patient &p2) const {
-    return true;
+    if (lastConsultationYear != p2.lastConsultationYear) {
+        return lastConsultationYear < p2.lastConsultationYear;
+    }
+    return idPatient < p2.idPatient;
 }

@@ -53,12 +53,15 @@ void Hospital::sortDoctors() {
         return a.idDoctor < b.idDoctor;
     };
 
-    // Ordenando a lista de médicos usando o comparador
-    std::sort(doctors.begin(), doctors.end(), comparator);
+    // Ordenando a lista de médicos usando o computador
+    sort(doctors.begin(), doctors.end(), comparator);
 }
 
 
-// TODO
+// Determina o número médio de pacientes atualmente à espera de
+// consulta (file toAttend) para os médicos da especialidade
+// sp. Caso não existam médicos da especialidade sp, o valor
+// retornado é 0
 float Hospital::averageNPatients(string sp) const {
     // Filtrar os médicos pela especialidade
     auto doctorsOfSpeciality = std::count_if(doctors.begin(), doctors.end(),
@@ -72,9 +75,11 @@ float Hospital::averageNPatients(string sp) const {
     // Calcular a média do número de pacientes em espera
     auto totalPatients = std::accumulate(doctors.begin(), doctors.end(), 0,
                                          [&sp](int sum, const Doctor& doctor) {
+                                             // Adicionar o número de pacientes em espera apenas para médicos da especialidade especificada
                                              return (doctor.specialty == sp) ? sum + doctor.toAttend.size() : sum;
                                          });
 
+    // Calcular e retornar a média do número de pacientes em espera
     return static_cast<float>(totalPatients) / static_cast<float>(doctorsOfSpeciality);
 }
 
@@ -102,9 +107,30 @@ int Hospital::removePatients(int minC) {
 
 
 // TODO
+
 vector<Patient> Hospital::getOldPatients(int y) const {
-    vector<Patient> res;
-    return res;
+    vector<Patient> result;
+
+    // Criar um paciente com a última consulta em y-1 para ser utilizado como referência no conjunto ordenado
+    Patient referencePatient;
+    referencePatient.lastConsultationYear = y - 1;
+
+    // Encontrar pacientes no conjunto com a última consulta antes de y
+    auto it = oldPatients.begin();
+    while (it != oldPatients.end() && it->lastConsultationYear < referencePatient.lastConsultationYear) {
+        result.push_back(*it);
+        ++it;
+    }
+
+    // Ordenar o vetor por ordem crescente de ano da última consulta e, em caso de igualdade, por ordem crescente de ID
+    std::sort(result.begin(), result.end(), [](const Patient& a, const Patient& b) {
+        if (a.lastConsultationYear != b.lastConsultationYear) {
+            return a.lastConsultationYear < b.lastConsultationYear;
+        }
+        return a.idPatient < b.idPatient;
+    });
+
+    return result;
 }
 
 
@@ -133,5 +159,41 @@ void Hospital::processConsultation(Consultation c) {
 
 // TODO
 bool Hospital::addDoctor(int id2, string sp2, int id1) {
-    return true;
+    Doctor newDoctor(id2, sp2);
+    bool exists = false;
+    int idoctor = 0;
+    queue<Patient> aux;
+    for (int i = 0; i < doctors.size(); i++) {
+        if (doctors[i].getID() == id1) {
+            exists = true;
+            aux = doctors[i].getPatientsToAttend();
+            break;
+        }
+        idoctor++;
+    }
+    doctors.push_back(newDoctor);
+
+    if(!exists || doctors[idoctor].getSpecialty() != sp2) {
+        return false;
+    }
+    else {
+        queue<Patient>newDocPac;
+        queue<Patient>oldDocPac;
+        int i = 1;
+        while(!aux.empty()) {
+            if (i%2 == 0){
+                newDocPac.push(aux.front());
+                aux.pop();
+                i++;
+            }
+            else {
+                oldDocPac.push(aux.front());
+                aux.pop();
+                i++;
+            }
+        }
+        doctors[idoctor].setPatientsToAttend(oldDocPac);
+        doctors.back().setPatientsToAttend(newDocPac);
+        return true;
+    }
 }
