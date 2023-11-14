@@ -22,12 +22,34 @@ void Driver::insertOrder(Order order) {
 
 // TODO
 bool Driver::operator<(const Driver &d1) const {
-    return true;
+    return driverId < d1.driverId;
 }
 
 // TODO
 vector<string> Driver::checkCommonClients(const Driver &d2) {
-    vector<string> result;
-    return result;
+    vector<string> commonClients;
+
+    // Temporary stacks to store orders and preserve the original order
+    stack<Order> tempToDeliver1 = toDeliver;
+    stack<Order> tempToDeliver2 = d2.toDeliver;
+
+    // set to keep track of unique client names
+    set<string> uniqueClients;
+
+    // Iterate through the forst driver's orders
+    while (!tempToDeliver1.empty()) {
+        uniqueClients.insert(tempToDeliver1.top().getClient());
+        tempToDeliver1.pop();
+    }
+
+    //Iterate through the second driver's orders
+    while (!tempToDeliver2.empty()) {
+        // Check if the client is common between the two drivers
+        if(uniqueClients.find(tempToDeliver2.top().getClinet()) != uniqueClients.end()) {
+            commonClinets.push_back(tempToDeliver2.top().getClinet());
+        }
+        tempToDelivery2.pop();
+    }
+    return commonClients;
 }
 
