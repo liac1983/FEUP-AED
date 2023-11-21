@@ -1,0 +1,8 @@
+# ninja log v5
+33	647	7215230437524165	CMakeFiles/aed2223_ci1.dir/Tests/patient.cpp.obj	26cffe35a3877b15
+175	1014	7215230440731381	CMakeFiles/aed2223_ci1.dir/Tests/consultation.cpp.obj	9095a7e700a40bd9
+2	4119	7215230455478626	CMakeFiles/aed2223_ci1.dir/main.cpp.obj	7ec33c141f24ef73
+15	4121	7215230455794235	CMakeFiles/aed2223_ci1.dir/Tests/doctor.cpp.obj	93dbd06699106951
+117	4172	7215230468796312	CMakeFiles/aed2223_ci1.dir/Tests/hospital.cpp.obj	3d79ed16cc291b50
+456	4172	7215230470468924	lib/googletest-master/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.obj	2856f78747971f95
+418	14389	7215230574688599	lib/googletest-master/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.obj	503945d84be2f667
