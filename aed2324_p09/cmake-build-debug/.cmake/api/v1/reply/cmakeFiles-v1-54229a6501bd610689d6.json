@@ -772,13 +772,85 @@
 			"isCMake" : true,
 			"isExternal" : true,
 			"path" : "C:/Users/lara2/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-CXX-ABI.cmake"
+		},
+		{
+			"path" : "lib/googletest/CMakeLists.txt"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Users/lara2/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeDependentOption.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Users/lara2/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.26/Modules/GNUInstallDirs.cmake"
+		},
+		{
+			"path" : "lib/googletest/googlemock/CMakeLists.txt"
+		},
+		{
+			"path" : "lib/googletest/googlemock/cmake/gmock.pc.in"
+		},
+		{
+			"path" : "lib/googletest/googlemock/cmake/gmock_main.pc.in"
+		},
+		{
+			"path" : "lib/googletest/googletest/CMakeLists.txt"
+		},
+		{
+			"path" : "lib/googletest/googletest/cmake/internal_utils.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Users/lara2/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.26/Modules/FindPython3.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Users/lara2/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.26/Modules/FindPython/Support.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Users/lara2/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.26/Modules/FindPackageHandleStandardArgs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Users/lara2/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.26/Modules/FindPackageMessage.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Users/lara2/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakePackageConfigHelpers.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Users/lara2/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.26/Modules/WriteBasicConfigVersionFile.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Users/lara2/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.26/Modules/BasicConfigVersion-AnyNewerVersion.cmake.in"
+		},
+		{
+			"path" : "lib/googletest/googletest/cmake/Config.cmake.in"
+		},
+		{
+			"path" : "lib/googletest/googletest/cmake/gtest.pc.in"
+		},
+		{
+			"path" : "lib/googletest/googletest/cmake/gtest_main.pc.in"
 		}
 	],
 	"kind" : "cmakeFiles",
 	"paths" : 
 	{
-		"build" : "C:/Users/lara2/OneDrive/Documentos/FEUP-AED/aed2223_ci1_161122/cmake-build-debug",
-		"source" : "C:/Users/lara2/OneDrive/Documentos/FEUP-AED/aed2223_ci1_161122"
+		"build" : "C:/Users/lara2/OneDrive/Documentos/FEUP-AED/aed2324_p09/cmake-build-debug",
+		"source" : "C:/Users/lara2/OneDrive/Documentos/FEUP-AED/aed2324_p09"
 	},
 	"version" : 
 	{

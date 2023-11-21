@@ -8,6 +8,7 @@ public:
     static int outDegree(const Graph<int> g, const int &v);
     static int inDegree(const Graph<int> g, const int &v);
     static int weightedOutDegree(const Graph<int> g, const int &v);
+    static int degree(const Graph<int> g, const int &v);
 };
 
 

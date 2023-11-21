@@ -170,9 +170,19 @@ void Vertex<T>::setAdj(const vector<Edge<T>> &adj) {
 //TODO
 template <class T>
 bool Graph<T>::addVertex(const T &in) {
-    // HINT: use the findVertex function to check if a vertex already exists
-    return false;
+    // Check if the vertex already exists
+    if (findVertex(in) != nullptr) {
+        // Vertex with the same content already exists
+        return false;
+    }
+
+    // If not, create a new vertex and add it to the graph
+    Vertex<T>* newVertex = new Vertex<T>{in};
+    vertexSet.push_back(newVertex);
+
+    return true;
 }
+
 
 //=============================================================================
 // Subexercise 1.2: addEdge
@@ -185,17 +195,29 @@ bool Graph<T>::addVertex(const T &in) {
 //TODO
 template <class T>
 bool Graph<T>::addEdge(const T &sourc, const T &dest, double w) {
-    // HINT: use findVertex to obtain the actual vertices
-    return false;
+    // Use findVertex to obtain pointers to the source and destination vertices
+    Vertex<T>* sourceVertex = findVertex(sourc);
+    Vertex<T>* destVertex = findVertex(dest);
+
+    // Check if both source and destination vertices exist
+    if (sourceVertex == nullptr || destVertex == nullptr) {
+        // One or both of the vertices do not exist
+        return false;
+    }
+
+    // Add the edge to the source vertex
+    sourceVertex->addEdge(destVertex, w);
+
+    return true;
 }
 
-/*
- * Auxiliary function to add an outgoing edge to a vertex (this),
- * with a given destination vertex (d) and edge weight (w).
- */
-//TODO
 template <class T>
 void Vertex<T>::addEdge(Vertex<T> *d, double w) {
+    // Create a new edge with the given destination vertex and weight
+    Edge<T> newEdge(d, w);
+
+    // Add the edge to the adj vector of the current vertex
+    adj.push_back(newEdge);
 }
 
 //=============================================================================
@@ -209,22 +231,33 @@ void Vertex<T>::addEdge(Vertex<T> *d, double w) {
 //TODO
 template <class T>
 bool Graph<T>::removeEdge(const T &sourc, const T &dest) {
-    // HINT: Use "findVertex" to obtain the actual vertices.
-    // HINT: Use "removeEgeTo" to actually remove the edge.
-    return false;
+    // Use findVertex to obtain pointers to the source and destination vertices
+    Vertex<T>* sourceVertex = findVertex(sourc);
+    Vertex<T>* destVertex = findVertex(dest);
+
+    // Check if both source and destination vertices exist
+    if (sourceVertex == nullptr || destVertex == nullptr) {
+        // One or both of the vertices do not exist
+        return false;
+    }
+
+    // Remove the edge from the source vertex
+    return sourceVertex->removeEdgeTo(destVertex);
 }
 
-/*
- * Auxiliary function to remove an outgoing edge (with a given destination (d))
- * from a vertex (this).
- * Returns true if successful, and false if such edge does not exist.
- */
-//TODO
 template <class T>
 bool Vertex<T>::removeEdgeTo(Vertex<T> *d) {
-    // HINT: use an iterator to scan the "adj" vector and then erase the edge.
-	return false;
+    // Use an iterator to scan the "adj" vector and erase the edge if found
+    for (auto it = adj.begin(); it != adj.end(); ++it) {
+        if (it->dest == d) {
+            adj.erase(it);
+            return true; // Edge successfully removed
+        }
+    }
+
+    return false; // Edge does not exist
 }
+
 
 //=============================================================================
 // Subexercise 1.4: removeVertex
@@ -237,10 +270,29 @@ bool Vertex<T>::removeEdgeTo(Vertex<T> *d) {
 //TODO
 template <class T>
 bool Graph<T>::removeVertex(const T &in) {
-    // HINT: use an iterator to scan the "vertexSet" vector and then erase the vertex.
-    // HINT: take advantage of "removeEdgeTo" to remove incoming edges.
-	return false;
+    // Find the vertex with the given content
+    auto it = find_if(vertexSet.begin(), vertexSet.end(),
+                      [&](Vertex<T>* vertex) { return vertex->getInfo() == in; });
+
+    // Check if the vertex with the given content was found
+    if (it == vertexSet.end()) {
+        // Vertex does not exist
+        return false;
+    }
+
+    // Remove outgoing edges from the vertex
+    for (auto edgeIt = (*it)->getAdj().begin(); edgeIt != (*it)->getAdj().end(); ++edgeIt) {
+        // Remove the edge from the destination vertex (incoming edge)
+        edgeIt->getDest()->removeEdgeTo(*it);
+    }
+
+    // Erase the vertex from the vertexSet
+    delete *it;
+    vertexSet.erase(it);
+
+    return true;
 }
+
 
 #endif /* GRAPH_H_ */
 
