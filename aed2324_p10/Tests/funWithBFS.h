@@ -3,6 +3,7 @@
 
 #include "Graph.h"
 #include "Person.h"
+#include <queue>
 
 class FunWithBFS {
 public:

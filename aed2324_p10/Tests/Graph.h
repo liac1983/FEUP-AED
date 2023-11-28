@@ -26,6 +26,9 @@ class Vertex {
 
     void addEdge(Vertex<T> *dest, double w);
     bool removeEdgeTo(Vertex<T> *d);
+
+    T data;
+    vector<pair<Vertex<T>*, int>> neighbors;
 public:
     Vertex(T in);
     T getInfo() const;
@@ -37,6 +40,10 @@ public:
     const vector<Edge<T>> &getAdj() const;
     void setAdj(const vector<Edge<T>> &adj);
     friend class Graph<T>;
+
+
+    T getData() const { return data; }
+    const vector<pair<Vertex<T>*, int>>& getNeighbors() const { return neighbors; }
 };
 
 template <class T>

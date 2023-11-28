@@ -89,11 +89,11 @@
 			[
 				{
 					"backtrace" : 6,
-					"path" : "C:/Users/lara2/Downloads/aed2324_p10/lib/googletest/googletest/include"
+					"path" : "C:/Users/lara2/OneDrive/Documentos/FEUP-AED/aed2324_p10/lib/googletest/googletest/include"
 				},
 				{
 					"backtrace" : 6,
-					"path" : "C:/Users/lara2/Downloads/aed2324_p10/lib/googletest/googletest"
+					"path" : "C:/Users/lara2/OneDrive/Documentos/FEUP-AED/aed2324_p10/lib/googletest/googletest"
 				}
 			],
 			"language" : "CXX",
