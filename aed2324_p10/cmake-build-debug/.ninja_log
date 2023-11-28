@@ -1,0 +1,26 @@
+# ninja log v5
+11	500	7228756930555836	CMakeFiles/aed2324_p10.dir/Tests/funWithDFS.cpp.obj	b98192194964c9d5
+34	555	7228756931135825	CMakeFiles/aed2324_p10.dir/Tests/funWithBFS.cpp.obj	b546703f32bfa095
+49	644	7228756932025878	CMakeFiles/aed2324_p10.dir/Tests/Person.cpp.obj	980a77557be158fc
+1	1034	7228756935932848	CMakeFiles/aed2324_p10.dir/main.cpp.obj	1363b23432973b2d
+85	1066	7228756936254431	lib/googletest/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.obj	407b04c980ee085e
+24	2148	7228756946950019	CMakeFiles/aed2324_p10.dir/Tests/tests.cpp.obj	61499227d025cf67
+72	10642	7228757031864829	lib/googletest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.obj	d2d67973c8f804f5
+10646	10793	7228757033501843	lib/libgtest.a	aee905aa2a5ac791
+10793	10889	7228757034461456	lib/libgtest_main.a	e37368fbd60593ce
+10889	11321	7228757038645759	aed2324_p10.exe	400502a03ac6b448
+4	401	7228759885967022	CMakeFiles/aed2324_p10.dir/Tests/funWithDFS.cpp.obj	b98192194964c9d5
+12	417	7228759886117094	CMakeFiles/aed2324_p10.dir/Tests/funWithBFS.cpp.obj	b546703f32bfa095
+44	520	7228759887143367	CMakeFiles/aed2324_p10.dir/Tests/Person.cpp.obj	980a77557be158fc
+27	1810	7228759899977951	CMakeFiles/aed2324_p10.dir/Tests/tests.cpp.obj	61499227d025cf67
+1810	2202	7228759903873683	aed2324_p10.exe	400502a03ac6b448
+23	599	7228761217673977	CMakeFiles/aed2324_p10.dir/Tests/funWithDFS.cpp.obj	b98192194964c9d5
+4	600	7228761217663984	CMakeFiles/aed2324_p10.dir/Tests/funWithBFS.cpp.obj	b546703f32bfa095
+10	674	7228761218542729	CMakeFiles/aed2324_p10.dir/Tests/Person.cpp.obj	980a77557be158fc
+17	1821	7228761229959972	CMakeFiles/aed2324_p10.dir/Tests/tests.cpp.obj	61499227d025cf67
+1821	2160	7228761233347698	aed2324_p10.exe	400502a03ac6b448
+15	939	7228762659625376	CMakeFiles/aed2324_p10.dir/Tests/funWithDFS.cpp.obj	b98192194964c9d5
+3	985	7228762660080563	CMakeFiles/aed2324_p10.dir/Tests/funWithBFS.cpp.obj	b546703f32bfa095
+9	1070	7228762660925782	CMakeFiles/aed2324_p10.dir/Tests/Person.cpp.obj	980a77557be158fc
+21	2524	7228762675425011	CMakeFiles/aed2324_p10.dir/Tests/tests.cpp.obj	61499227d025cf67
+2524	2940	7228762679445566	aed2324_p10.exe	400502a03ac6b448
