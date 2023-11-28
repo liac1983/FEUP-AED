@@ -19,15 +19,15 @@ template <class T> class Vertex;
 
 template <class T>
 class Vertex {
-	T info;                // contents
-	vector<Edge<T> > adj;  // list of outgoing edges
-	bool visited;          // auxiliary field
+    T info;                // contents
+    vector<Edge<T> > adj;  // list of outgoing edges
+    bool visited;          // auxiliary field
     bool processing;       // auxiliary field
 
     void addEdge(Vertex<T> *dest, double w);
-	bool removeEdgeTo(Vertex<T> *d);
+    bool removeEdgeTo(Vertex<T> *d);
 public:
-	Vertex(T in);
+    Vertex(T in);
     T getInfo() const;
     void setInfo(T in);
     bool isVisited() const;
@@ -41,34 +41,34 @@ public:
 
 template <class T>
 class Edge {
-	Vertex<T> * dest;      // destination vertex
-	double weight;         // edge weight
+    Vertex<T> * dest;      // destination vertex
+    double weight;         // edge weight
 public:
-	Edge(Vertex<T> *d, double w);
+    Edge(Vertex<T> *d, double w);
     Vertex<T> *getDest() const;
     void setDest(Vertex<T> *dest);
     double getWeight() const;
     void setWeight(double weight);
     friend class Graph<T>;
-	friend class Vertex<T>;
+    friend class Vertex<T>;
 };
 
 template <class T>
 class Graph {
-	vector<Vertex<T> *> vertexSet;    // vertex set
+    vector<Vertex<T> *> vertexSet;    // vertex set
     void dfsVisit(Vertex<T> *v,  vector<T> & res) const;
     bool dfsIsDAG(Vertex<T> *v) const;
 public:
     Vertex<T> *findVertex(const T &in) const;
     int getNumVertex() const;
-	bool addVertex(const T &in);
-	bool removeVertex(const T &in);
-	bool addEdge(const T &sourc, const T &dest, double w);
-	bool removeEdge(const T &sourc, const T &dest);
+    bool addVertex(const T &in);
+    bool removeVertex(const T &in);
+    bool addEdge(const T &sourc, const T &dest, double w);
+    bool removeEdge(const T &sourc, const T &dest);
     vector<Vertex<T> * > getVertexSet() const;
-	vector<T> dfs() const;
-	vector<T> dfs(const T & source) const;
-	vector<T> bfs(const T &source) const;
+    vector<T> dfs() const;
+    vector<T> dfs(const T & source) const;
+    vector<T> bfs(const T &source) const;
 };
 
 /****************** Provided constructors and functions ********************/
@@ -82,7 +82,7 @@ Edge<T>::Edge(Vertex<T> *d, double w): dest(d), weight(w) {}
 
 template <class T>
 int Graph<T>::getNumVertex() const {
-	return vertexSet.size();
+    return vertexSet.size();
 }
 
 template <class T>
@@ -135,10 +135,10 @@ void Edge<T>::setWeight(double weight) {
  */
 template <class T>
 Vertex<T> * Graph<T>::findVertex(const T &in) const {
-	for (auto v : vertexSet)
-		if (v->info == in)
-			return v;
-	return NULL;
+    for (auto v : vertexSet)
+        if (v->info == in)
+            return v;
+    return NULL;
 }
 
 template <class T>
@@ -168,10 +168,10 @@ void Vertex<T>::setAdj(const vector<Edge<T>> &adj) {
  */
 template <class T>
 bool Graph<T>::addVertex(const T &in) {
-	if ( findVertex(in) != NULL)
-		return false;
-	vertexSet.push_back(new Vertex<T>(in));
-	return true;
+    if ( findVertex(in) != NULL)
+        return false;
+    vertexSet.push_back(new Vertex<T>(in));
+    return true;
 }
 
 
@@ -182,12 +182,12 @@ bool Graph<T>::addVertex(const T &in) {
  */
 template <class T>
 bool Graph<T>::addEdge(const T &sourc, const T &dest, double w) {
-	auto v1 = findVertex(sourc);
-	auto v2 = findVertex(dest);
-	if (v1 == NULL || v2 == NULL)
-		return false;
-	v1->addEdge(v2,w);
-	return true;
+    auto v1 = findVertex(sourc);
+    auto v2 = findVertex(dest);
+    if (v1 == NULL || v2 == NULL)
+        return false;
+    v1->addEdge(v2,w);
+    return true;
 }
 
 /*
@@ -196,7 +196,7 @@ bool Graph<T>::addEdge(const T &sourc, const T &dest, double w) {
  */
 template <class T>
 void Vertex<T>::addEdge(Vertex<T> *d, double w) {
-	adj.push_back(Edge<T>(d, w));
+    adj.push_back(Edge<T>(d, w));
 }
 
 
@@ -207,11 +207,11 @@ void Vertex<T>::addEdge(Vertex<T> *d, double w) {
  */
 template <class T>
 bool Graph<T>::removeEdge(const T &sourc, const T &dest) {
-	auto v1 = findVertex(sourc);
-	auto v2 = findVertex(dest);
-	if (v1 == NULL || v2 == NULL)
-		return false;
-	return v1->removeEdgeTo(v2);
+    auto v1 = findVertex(sourc);
+    auto v2 = findVertex(dest);
+    if (v1 == NULL || v2 == NULL)
+        return false;
+    return v1->removeEdgeTo(v2);
 }
 
 /*
@@ -221,12 +221,12 @@ bool Graph<T>::removeEdge(const T &sourc, const T &dest) {
  */
 template <class T>
 bool Vertex<T>::removeEdgeTo(Vertex<T> *d) {
-	for (auto it = adj.begin(); it != adj.end(); it++)
-		if (it->dest  == d) {
-			adj.erase(it);
-			return true;
-		}
-	return false;
+    for (auto it = adj.begin(); it != adj.end(); it++)
+        if (it->dest  == d) {
+            adj.erase(it);
+            return true;
+        }
+    return false;
 }
 
 /*
@@ -236,16 +236,16 @@ bool Vertex<T>::removeEdgeTo(Vertex<T> *d) {
  */
 template <class T>
 bool Graph<T>::removeVertex(const T &in) {
-	for (auto it = vertexSet.begin(); it != vertexSet.end(); it++)
-		if ((*it)->info  == in) {
-			auto v = *it;
-			vertexSet.erase(it);
-			for (auto u : vertexSet)
-				u->removeEdgeTo(v);
-			delete v;
-			return true;
-		}
-	return false;
+    for (auto it = vertexSet.begin(); it != vertexSet.end(); it++)
+        if ((*it)->info  == in) {
+            auto v = *it;
+            vertexSet.erase(it);
+            for (auto u : vertexSet)
+                u->removeEdgeTo(v);
+            delete v;
+            return true;
+        }
+    return false;
 }
 
 

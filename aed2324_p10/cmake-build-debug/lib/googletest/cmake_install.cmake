@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/lara2/OneDrive/Documentos/FEUP-AED/aed2324_p10/lib/googletest
+# Install script for directory: C:/Users/lara2/Downloads/aed2324_p10/lib/googletest
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,7 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("C:/Users/lara2/OneDrive/Documentos/FEUP-AED/aed2324_p10/cmake-build-debug/lib/googletest/googlemock/cmake_install.cmake")
+  include("C:/Users/lara2/Downloads/aed2324_p10/cmake-build-debug/lib/googletest/googlemock/cmake_install.cmake")
 
 endif()
 
