@@ -1,0 +1,16 @@
+# ninja log v5
+15	856	7234786915873318	CMakeFiles/aed2324_p12.dir/Tests/funWithGraphs.cpp.obj	679e824adbac968a
+1	1448	7234786921789756	CMakeFiles/aed2324_p12.dir/main.cpp.obj	b2125bdab58225d2
+214	1574	7234786923048411	lib/googletest/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.obj	ce61ad72b3eea944
+31	3434	7234786941555983	CMakeFiles/aed2324_p12.dir/Tests/tests.cpp.obj	63455e4e32568be9
+117	22977	7234787136984434	lib/googletest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.obj	ff29a8d11b661d7f
+22980	23242	7234787139733525	lib/libgtest.a	aee905aa2a5ac791
+23242	23352	7234787140828317	lib/libgtest_main.a	e37368fbd60593ce
+23352	24642	7234787153410546	aed2324_p12.exe	a1c72ee35c47d31d
+9	675	7234790045880574	CMakeFiles/aed2324_p12.dir/Tests/funWithGraphs.cpp.obj	679e824adbac968a
+678	1529	7234790054347551	aed2324_p12.exe	a1c72ee35c47d31d
+6	693	7234791518528317	CMakeFiles/aed2324_p12.dir/Tests/funWithGraphs.cpp.obj	679e824adbac968a
+694	1780	7234791529124729	aed2324_p12.exe	a1c72ee35c47d31d
+17	859	7234813610866086	CMakeFiles/aed2324_p12.dir/Tests/funWithGraphs.cpp.obj	679e824adbac968a
+6	3199	7234813634077106	CMakeFiles/aed2324_p12.dir/Tests/tests.cpp.obj	63455e4e32568be9
+3201	4262	7234813644759562	aed2324_p12.exe	a1c72ee35c47d31d
