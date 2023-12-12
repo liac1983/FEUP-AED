@@ -1,0 +1,3 @@
+C:/Users/lara2/OneDrive/Documentos/FEUP-AED/Teste 2/cmake-build-debug/CMakeFiles/Teste_2.dir
+C:/Users/lara2/OneDrive/Documentos/FEUP-AED/Teste 2/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/lara2/OneDrive/Documentos/FEUP-AED/Teste 2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
