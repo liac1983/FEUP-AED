@@ -17,6 +17,9 @@ public:
     static int giantComponent(Graph<int> *g);
     static list<list<int>> scc(Graph<int> *g);
     static unordered_set<int> articulationPoints(Graph<int> *g);
+
+private:
+    static void dfs_art(Graph<int> *g, Vertex<int> *v, Vertex<int> *parent, int &i, stack<int> &s, unordered_set<int> &res);
 };
 
 #endif

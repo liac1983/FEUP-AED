@@ -76,20 +76,62 @@ int dfsGC(Vertex<int> *v) {
 // Exercise 2.3: Strongly Connected Components
 //=============================================================================
 // TODO
-void dfs_scc(Graph<int> *g, Vertex<int> *v, stack<int> &s, list<list<int>> &l, int &i);
+void dfs_scc(Graph<int> *g, Vertex<int> *v, stack<int> &s, list<list<int>> &l, int &i, std::unordered_set<int> &inStack);
 list<list<int>> funWithGraphs::scc(Graph<int> *g){
     list<list<int>> res;
+    stack<int> s;
+    int i = 0;
+    std::unordered_set<int> inStack;
+
+    for (auto v : g->getVertexSet()) {
+        if (!v->isVisited()) {
+            dfs_scc(g, v, s, res, i, inStack);
+        }
+    }
 
     return res;
 }
 
-void dfs_scc(Graph<int> *g, Vertex<int> *v, stack<int> &s, list<list<int>> &l, int &i){}
+void dfs_scc(Graph<int> *g, Vertex<int> *v, stack<int> &s, list<list<int>> &l, int &i, std::unordered_set<int> &inStack){
+    v->setVisited(true);
+    v->setNum(i);
+    v->setLow(i);
+    i++;
+
+    s.push(v->getInfo());  // Use getInfo() instead of getID()
+    inStack.insert(v->getInfo());
+
+    for (auto &e : v->getAdj()) {
+        auto w = e.getDest();
+
+        if (!w->isVisited()) {
+            dfs_scc(g, w, s, l, i, inStack);
+            v->setLow(std::min(v->getLow(), w->getLow()));
+        } else if (inStack.count(w->getInfo()) > 0) {  // Use getInfo() instead of getID()
+            v->setLow(std::min(v->getLow(), w->getLow()));
+        }
+    }
+
+    if (v->getNum() == v->getLow()) {
+        list<int> component;
+        int w;
+        do {
+            w = s.top();
+            s.pop();
+            inStack.erase(w);
+            component.push_back(w);
+        } while (w != v->getInfo());  // Use getInfo() instead of getID()
+
+        l.push_back(component);
+    }
+}
 
 
 //=============================================================================
 // Exercise 2.4: Articulation Points
 //=============================================================================
 // TODO
+
 void dfs_art(Graph<int> *g, Vertex<int> *v, stack<int> &s, unordered_set<int> &res, int &i);
 unordered_set<int> funWithGraphs::articulationPoints(Graph<int> *g) {
     unordered_set<int> res;
@@ -124,7 +166,7 @@ void dfs_art(Graph<int> *g, Vertex<int> *v, Vertex<int> *parent, int &i, stack<i
             dfs_art(g, w, v, i, s, res);
 
             // Update low value after child's traversal
-            v->setLow(min(v->getLow(), w->getLow()));
+            v->setLow(std::min(v->getLow(), w->getLow()));
 
             // Check if the current vertex is an articulation point
             if ((parent == nullptr && children > 1) || (parent != nullptr && w->getLow() >= v->getNum())) {
@@ -132,7 +174,7 @@ void dfs_art(Graph<int> *g, Vertex<int> *v, Vertex<int> *parent, int &i, stack<i
             }
         } else if (w != parent && v->getNum() > w->getNum()) {
             // Back edge: update low value
-            v->setLow(min(v->getLow(), w->getNum()));
+            v->setLow(std::min(v->getLow(), w->getNum()));
             s.push(v->getInfo());  // Use getInfo() instead of getID()
             s.push(w->getInfo());  // Use getInfo() instead of getID()
         }
