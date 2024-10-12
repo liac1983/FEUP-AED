@@ -46,3 +46,15 @@ int main() {
 
     return 0;
 }
+/* 
+int remove(int v, int x [], int n) {
+    int i = 0;
+    int t = 0;
+    for (int p = 0; p < n; p++) {
+        if (x[p] <= v) {
+            x[t] = x[p];
+            t++;
+        }
+    }
+    return t;
+} */
