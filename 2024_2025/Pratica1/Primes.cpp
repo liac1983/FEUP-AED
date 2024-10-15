@@ -62,3 +62,28 @@ int main() {
 
     return 0;
 }
+
+/* void prime_factorization(int n, const vector<int>& primes) {
+    vector<int> factors;
+    for (int prime : primes) {
+        if (prime * prime > n ) {
+            break;
+        }
+        while (n % prime == 0) {
+            factors.push_back(prime);
+
+            n /= prime;
+        }
+    }
+    if (n > 1) {
+        factors.push_back(n);
+    }
+    for (size_t i = 0; i < factors.size(); ++i) {
+        if (i > 0) {
+            cout << "*";
+        }
+        cout << factors[i];
+    }
+    cout << endl;
+} */
+

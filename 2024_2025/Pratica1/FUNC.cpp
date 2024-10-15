@@ -51,3 +51,26 @@ int main() {
 
     return 0;
 }
+
+/* pair<int, int> FUNC(const vector<int>& x, int n, vector<int>& v, int p)
+{
+    for (int k = 0; k <= p; ++k) {
+        v[k] = 0;
+    }
+    int s = x[0];
+    v[s] = 1;
+    int t = 1;
+
+    for (int k = 1; k < n; ++k) {
+        v[x[k]]++;
+        if (s == x[k] || v[x[k]] > v[s]) {
+            s = x[k];
+            t = 1;
+        }
+        else if (v[x[k]] == v[s]) {
+            t++;
+        }
+    }
+    return {s,t};
+} */
+

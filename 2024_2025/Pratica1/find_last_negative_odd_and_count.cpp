@@ -41,3 +41,24 @@ int main() {
 
     return 0;
 }
+
+/*
+pair<int, int> find_last_negatiove_odd_and_count() {
+    int num;
+    int last_negative_odd = 0;
+    int odd_count = 0;
+
+    while (true) {
+        cin >> num;
+        if (num == 0) {
+            break;
+        }
+        if (num % 2 != 0) {
+            odd_count++;
+            if (num < 0) {
+                last_negative_odd = num;
+            }
+        }
+    }
+    return {last_negative_odd, odd_count};
+}*/

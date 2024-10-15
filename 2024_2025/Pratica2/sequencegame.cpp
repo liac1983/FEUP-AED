@@ -19,6 +19,18 @@ int maxSum(const vector<int> &v) {
 
     return maxSoFar;
 }
+/* 
+int maxSum(const vector<int> &v) {
+    int n = v.size();
+    int maxSoFar = v[0];
+    int maxEndinHere = v[0];
+    for (int i = 1; i < n; i++) {
+        maxEndingHere = max(v[i], maxEndingHere + V[i]);
+        maxSoFar = max(maxSoFar, maxEndingHere);
+
+    }
+    return maxSoFar;
+} */
 
 int main() {
     int N;
