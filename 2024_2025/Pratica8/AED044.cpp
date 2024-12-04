@@ -6,19 +6,21 @@ using namespace std;
 
 int main() {
     int N;
-    cin >> N;
-
+    cin >> N; // Numero de elementos da sequencia
+    // Mapa para contar as ocorrências de cada numero 
+    // chave é o numero e o valor é a sua frequencia
     map<int, int> frequency; // Map to count occurrences of each number
 
     // Read the sequence and populate the map
     for (int i = 0; i < N; i++) {
-        int num;
+        int num; // numero da sequecia
         cin >> num;
-        frequency[num]++;
+        frequency[num]++; // incrementa a frequencia do numero no mapa
     }
 
     // Calculate the total number of removals
-    int removals = 0;
+    int removals = 0; // Numero de remoções necessárias
+    // Itera sobre o mapa para calcular o numero de remoções necessárias
     for (const auto &entry : frequency) {
         int x = entry.first;  // The number
         int f = entry.second; // Frequency of the number

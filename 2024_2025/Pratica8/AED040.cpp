@@ -45,20 +45,21 @@ int main() {
 using namespace std;
 
 int main() {
-    int C, B;
+    int C, B; // numero dos adesivos da coleção 
 
     // Input number of stickers in the collection
     cin >> C;
-    set<int> collection;
+    set<int> collection; // armazenar os adesivos, elimina automaticamente duplicados e ordena
+    // Inserir adesivos na coleção
     for (int i = 0; i < C; i++) {
         int sticker;
-        cin >> sticker;
+        cin >> sticker; // Lê o numero do adesivo
         collection.insert(sticker);  // Add to set, removes duplicates
     }
 
     // Input number of stickers in the bag
     cin >> B;
-    set<int> new_stickers;
+    set<int> new_stickers; // armazenar os adesivos que não estão na coleção 
     for (int i = 0; i < B; i++) {
         int sticker;
         cin >> sticker;
@@ -75,7 +76,7 @@ int main() {
     // Output the new stickers in sorted order, if any
     if (!new_stickers.empty()) {
         for (auto sticker : new_stickers) {
-            cout << sticker << " ";
+            cout << sticker << " "; // numero de adesivos novos
         }
         cout << endl;
     }

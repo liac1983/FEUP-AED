@@ -162,17 +162,24 @@ public:
   // ---------------------------------------------------------
   // Method to calculate the imbalance of a node
   // ---------------------------------------------------------
+  // Função para calcular o fator de balanceamento de um nó em uma arvore binaria ou AVL
   int balance(const T & val) {
+    // nó correspondente ao valor val na arvore, começando pela raiz
     Node *node = findNode(root, val);
+    // Se o nó for encontrado, retorna 0 ( arvore balanceada em relação a esse valor inexistente)
     if (node == nullptr) return 0;
+    // Retorna o fator de balanceamento
+    // diferença entre a altura da subarvore direita e a altura da subarvore esquerda do nó
     return height(node->right) - height(node->left);
   }
-
+  // Função para encontrar um nó val na arvore binaria
   Node *findNode(Node *n, const T & val) {
+    // Se o nó for nulo, o valor está na arvore
     if (n == nullptr) return nullptr;
+    // Se o valor procurado for menor que o valor do nó atual, busca na subarvore esq
     if (val < n->value) return findNode(n->left, val);
     if (val > n->value) return findNode(n->right, val);
-    return n;
+    return n; // Se o valor do nó for igual ao valor procurado, retorna nó
   }
 
     // ---------------------------------------------------------
