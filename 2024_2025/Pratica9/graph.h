@@ -114,7 +114,7 @@ public:
   // --------------------------------------------------------------
   // New method to calculate the outgoing degree of a node
   // --------------------------------------------------------------
-  int outDegree(int v) {
+  int outDegree(int v) { // Calcula o grau de saida de um nó
     if (v < 1 || v > n) return 0; // Check if node is valid
     return nodes[v].adj.size();   // Return size of adjacency list
   }
@@ -130,7 +130,7 @@ public:
     }
     return totalWeight;
   }
-
+  // return the number of connected components of the graph
   int nrConnectedComponents() {
     // Marca todos os nós como não visitados
     int count = 0;
@@ -154,11 +154,11 @@ public:
 
 void dfs5(int v) {
     //std::cout << v << " "; // show node order
-    nodes[v].visited = true;
-    for (auto e : nodes[v].adj) {
-      int w = e.dest;
-      if (!nodes[w].visited)
-        dfs5(w);
+    nodes[v].visited = true; // Marca o nó atual como visitado e explora os seus vizinhos
+    for (auto e : nodes[v].adj) { // iterar pelos vizinhos do nó
+      int w = e.dest; // Obtém o destino do nó atual
+      if (!nodes[w].visited) // Verificar se o nó de destino ainda não foi visitado
+        dfs5(w); // Chama o DFS no nó de destino
     }
   }
 
@@ -177,16 +177,18 @@ int dfsCountNodes(int v) {
     return count; // Return the total count of nodes in this component
 }
 
+// Função para encontrar o tamanho do maior componente conectado num grafo
 int largestComponent() {
     // Mark all nodes as unvisited initially
     for (int i = 1; i <= n; i++) {
         nodes[i].visited = false;
     }
-
+    // Tamanho do maior componente
     int largestSize = 0;
 
     // Iterate over all nodes
     for (int i = 1; i <= n; i++) {
+      // Verififca se o nó aind anão foi visitado
         if (!nodes[i].visited) {
             // Calculate the size of the connected component
             int componentSize = dfsCountNodes(i);
@@ -214,12 +216,13 @@ void dfsTopological(int v, std::vector<bool>& visited, std::list<int>& order) {
     // Add the node to the front of the order after all its descendants
     order.push_front(v);
 }
-
+// Função para realizar a ordenação topologica de um grafo orientado DAG
 std::list<int> topologicalSorting() {
-    std::vector<bool> visited(n + 1, false); // Track visited nodes
+    std::vector<bool> visited(n + 1, false); // Track visited nodes DFS
     std::list<int> order; // List to store the topological order
 
     // Perform DFS for all nodes
+    // cada no é considerado ponto inicial se aind anão foi visitado
     for (int i = 1; i <= n; i++) {
         if (!visited[i]) {
             dfsTopological(i, visited, order);
@@ -229,12 +232,12 @@ std::list<int> topologicalSorting() {
     return order; // Return the topological order
 }
 
-
+// Função para detectar ciclos em um grafo direcionado usando DFS.
 bool dfsCycleDetection(int v, std::vector<int>& color) {
     color[v] = 1; // Mark the node as "visiting" (gray)
-
+    // Itera sobre todos os vizinhos do nó atual.
     for (const auto& edge : nodes[v].adj) {
-        int neighbor = edge.dest;
+        int neighbor = edge.dest; // Obtém o nó vizinho.
 
         if (color[neighbor] == 1) {
             // Found a back edge indicating a cycle
