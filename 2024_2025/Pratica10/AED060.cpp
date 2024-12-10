@@ -14,14 +14,14 @@ const int dy[] = {0, 0, -1, 1};
 int findShortestPath(vector<string> &maze, int R, int C, pair<int, int> start, pair<int, int> target) {
     // Distance matrix to store the number of steps to each cell
     vector<vector<int>> dist(R, vector<int>(C, -1));
-    queue<pair<int, int>> q;
+    queue<pair<int, int>> q; // queue para o BFS
 
     // Start BFS from the player's position
     q.push(start);
-    dist[start.first][start.second] = 0;
+    dist[start.first][start.second] = 0; // Distancia inicial é 0
 
     while (!q.empty()) {
-        auto [x, y] = q.front();
+        auto [x, y] = q.front(); // Pega a célula atual
         q.pop();
 
         // If we reach the treasure, return the distance
@@ -31,13 +31,13 @@ int findShortestPath(vector<string> &maze, int R, int C, pair<int, int> start, p
 
         // Explore all 4 possible moves
         for (int i = 0; i < 4; ++i) {
-            int nx = x + dx[i];
+            int nx = x + dx[i]; // New positions
             int ny = y + dy[i];
 
             // Check bounds and whether the cell is traversable and unvisited
             if (nx >= 0 && nx < R && ny >= 0 && ny < C && maze[nx][ny] != '#' && dist[nx][ny] == -1) {
-                dist[nx][ny] = dist[x][y] + 1;
-                q.push({nx, ny});
+                dist[nx][ny] = dist[x][y] + 1; // Atualiza a distancia
+                q.push({nx, ny}); // Adiciona a nova posição na fila
             }
         }
     }

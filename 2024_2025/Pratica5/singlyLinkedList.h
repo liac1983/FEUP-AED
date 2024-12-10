@@ -165,6 +165,7 @@ public:
   // ------------------------------------------------------------
   // TODO: put the functions you need to implement below this
   // ------------------------------------------------------------
+  // Retorna a referencia do valor do nó na posição pos
   T & get(int pos) {
     // Verifica se a posição solicitada está dentro dos limites da lista(0 e length)
     assert(pos >= 0 && pos < length && "Position out of bounds");
@@ -202,7 +203,7 @@ public:
     return count;
   }
 
-    // ------------------------------------------------------------
+  // ------------------------------------------------------------
   // Method to remove element at position pos
   // ------------------------------------------------------------
   void remove(int pos) {
