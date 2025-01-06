@@ -222,6 +222,16 @@ public:
     return numberLeafs(n->left) + numberLeafs(n->right);     // Soma das folhas das subárvores
     }
 
+    /*int numberLeafs() {
+      return numberLeafs(root);
+    }
+
+    int numberLeafs(Node *n) {
+      if (n == nullptr) return 0; // Caso se só houver uma folha 
+      if (n->left == nullptr && n->right == nullptr) return 1; 
+      return numberLeafs(n->Left) + numberLeafs(n->right); // soma todas as folhas da árvore
+    }*/
+
     // ---------------------------------------------------------
     // Check if the tree is strictly binary
     // ---------------------------------------------------------
@@ -237,6 +247,19 @@ public:
     return false; // Caso de nó com um filho
     }
 
+    /*bool strict() {
+      return isStrict(root);
+    }
+
+    bool isStrict(Node *n) {
+      if (n == nullptr) return true;  // árvore vazia é estritamente binária
+      if (n->left == nullptr && n->right == nullptr) return true; // Só 1 folha é estritamente binária
+      if (n->left != nullptr && n->right != nullptr) // Se tem dois filhos, verifica os filhos
+        return isStrict(n->left) && isStrict(n->right);
+      return false; // Se só tiver 1 nó como filho 
+    }*/
+
+
     // ---------------------------------------------------------
     // Access the value at a given path in the tree
     // ---------------------------------------------------------
@@ -250,6 +273,17 @@ public:
     if (s[pos] == 'L') return findPath(n->left, s, pos + 1); // Caminho à esquerda
     return findPath(n->right, s, pos + 1); // Caminho à direita
     }
+
+    /*T &path(std::string s) {
+      if (s == "_") return root->value; // raiz
+      return findPath(root, s,0);
+    }
+
+    T &findPath(Node *n, std::string &s, int pos) {
+      if (pos == s.length()) return n->value; // final do caminho, retorna o valor do nó
+      if (s[pos] == 'L') return findPath(n->left,s,pos+1); // Caminho da esquerda
+      return findPath(n->right, s, pos+1); // Caminho da direita
+    }*/
 
     // ---------------------------------------------------------
     // Count the number of nodes at a certain depth
@@ -266,6 +300,18 @@ public:
             countNodesAtLevel(n->right, depth + 1, targetDepth);
     }
 
+    /* int nodesLevel(int k) {
+      return countNodesAtLevel(root, 0, k); // Inicia a contagem a partir do nível 0(raiz)
+    }
+
+    int countNodesAtLevel(Node *n, int depth, int targetDepth) {
+      if (n == nullptr) return 0; // raiz nível 0
+      if (depth == targetDepth) return 1; // Se estamos no nível desejado conta 1
+      return countNodesAtLevel(n->left, depth+1, targetDepth) +
+             countNodesAtLevel(n->right, depth+1, targetDepth);
+      // Soma dos nós nas arvores da esquerda e da direita no proximo nível
+    } */
+
     // ---------------------------------------------------------
     // Count the number of nodes with even values in the tree
     // ---------------------------------------------------------
@@ -279,6 +325,17 @@ public:
     // Soma os nós pares nas subárvores esquerda e direita
     return count + countEvenNodes(n->left) + countEvenNodes(n->right);
     }
+
+    /*int countEven() {
+      return countEvenNodes(root);
+    }
+
+    int countEvenNodes(Node *n) {
+      if (n == nullptr) return 0; // nó nulo não conta 
+      int count = (n->value % 2 == 0) ? 1 : 0; // Conta 1 se tiver só um nó par
+      // Soma os nós pares nas subárvores esquerda e direita
+      return count + countEvenNodes(n->left) + countEvenNodes(n->right);
+    }*/
 
     // ---------------------------------------------------------
     // Sum of nodes at each level in the tree
@@ -297,6 +354,20 @@ public:
     sumAtLevels(n->right, depth + 1, sums); // Chama recursivamente para a subárvore direita
     }
 
+    /*std::vector<int> sumLevels() {
+      int h = height(); // Calcula a altura da árvore
+      std::vector<int> sums(h+1,0); // Inicializa o vetor de somas com zeros para cada nível
+      sumAtLevels(root, 0, sums); // Popula a vetor de somas começando da raiz
+      return sums;
+    }
+
+    void sumAtLevels(Node *n, int depth, std::vector<int> &sums) {
+      if (n == nullptr) return; // Se o nó é nulo, não contribui para a soma
+      sums[depth] += n->value; // Adiciona o valor do nó à soma do nível atual
+      sumAtLevels(n->left, depth + 1, sums); // Chama recursivamente para a subárvore esquerda 
+      sumAtLevels(n->right, depth +1, sums); // Chama recursivamente para a subárvore direita
+    }*/
+
     // ---------------------------------------------------------
     // Find the path with the maximum sum in the tree
     // ---------------------------------------------------------
@@ -305,6 +376,13 @@ public:
     std::string maxPath = ""; // Armazena o caminho correspondente à soma máxima
     findMaxSumPath(root, 0, "", maxSum, maxPath); // Inicia a busca a partir da raiz
     return maxPath;
+    }
+
+    std::string maxSum() {
+      int mexSum = 0;
+      std::string maxPath = "";
+      findMaxSumPath(root, 0, "", maxSum, maxPath);
+      return maxPath;
     }
 
     void findMaxSumPath(Node *n, int currentSum, std::string currentPath, int &maxSum, std::string &maxPath) {
@@ -332,6 +410,24 @@ public:
     if (n->right != nullptr) {
         findMaxSumPath(n->right, currentSum, currentPath + "R", maxSum, maxPath);
     }
+    }
+
+    void findMaxSumPath(Node *n, int currentSum, std::string currentPath, int &maxSum, std::string &maxPath) {
+      if (n == nullptr) return;
+      currentSum += n->value;
+      if(n->left == nullptr && n->right == nullptr) {
+        if(currentSum > maxSum) {
+          maxSum = currentSum;
+          maxPath = curentPath;
+        }
+        return;
+      }
+      if (n->left != nullptr) {
+        findMaxSumPath(n->left, currentSum, currentPath + "L", maxSum, maxPath);
+      }
+      if (n->right != nullptr) {
+        findMaxsumPath(n->right, currentSum, currentPath + "R", maxSum, maxPath);
+      }
     }
 
 

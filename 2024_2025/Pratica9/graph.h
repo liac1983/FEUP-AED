@@ -138,8 +138,6 @@ public:
         nodes[i].visited = false;
     }
 
-    
-
     // Itera por todos os nós
     for (int i = 1; i <= n; i++) {
         // Se o nó não foi visitado, inicia uma DFS a partir dele
@@ -152,6 +150,24 @@ public:
         return count; // Retorna o número de componentes conectados
   }
 
+  // Retorna o numero de componentes connectados
+  /*int nrConnectedComponents() {
+    int count = 0;
+    // marca todos os nós como não visitados
+    for (int i = 1; i <= n; i++) {
+      nodes[i].visited = false;
+    }
+    // Itera por todos os nós
+    for (int i = 1; i <= n; i++) {
+      // Se o nó foi visitado, inicia um dfs a partir dele
+      if (!nodes[i].visited) {
+        count++;
+        dfs5(i); // visita todos os nós conectados ao componente atual
+      }
+    }
+    return count;
+  }*/
+
 void dfs5(int v) {
     //std::cout << v << " "; // show node order
     nodes[v].visited = true; // Marca o nó atual como visitado e explora os seus vizinhos
@@ -161,6 +177,20 @@ void dfs5(int v) {
         dfs5(w); // Chama o DFS no nó de destino
     }
   }
+
+/*void dfs5(int v) {
+  // marca o nó atual como visitado
+  nodes[v].visited = true; 
+  // Itera por os nós vizinhos
+  for (auto e : nodes[v].adj) {
+    // obtém o destino do nó atual
+    int w = e.dest;
+    // Verifica se o nó de destino ainda não foi visitado
+    if (!nodes[w].visited) {
+      dfs5(w); // chama o dfs no nó de destino 
+    }
+  }
+}*/
 
 int dfsCountNodes(int v) {
     nodes[v].visited = true; // Mark the node as visited
@@ -176,6 +206,18 @@ int dfsCountNodes(int v) {
 
     return count; // Return the total count of nodes in this component
 }
+
+/*int dfsCountNodes(int v) {
+  nodes[v].visited = true; // marca os nós como visitados
+  int count = 1; // começa a contar o primeiro nó
+  for (const auto& edge : nodes[v].adj) { // visita os nós adjacentes
+    int neighbor = edge.dest; 
+    if (!nodes[neighbor].visited) {
+      count += dfsCountNodes(neighbor); // adiciona os nós à contagem
+    }
+  }
+  return count; // Retorna o numero total de nós 
+}*/
 
 // Função para encontrar o tamanho do maior componente conectado num grafo
 int largestComponent() {
@@ -202,6 +244,22 @@ int largestComponent() {
     return largestSize; // Return the size of the largest component
 }
 
+/*int largestComponent() {
+  for (int i = 1; i <= n; i++) {
+    nodes[i].visited = false; // marca todos os nós como não visitados inicialmenete
+  }
+  int largestSize = 0; // tamanho do maior componente
+  for (int i = 1; i <= n; i++) { // itera pelos nós
+    if (!nodes[i].visited) { // verifica se o nó ainda não foi visitado
+      int componentSize = dfsCountNodes(i); // Calcula o tamanho dos componentes conectados
+      if (componentSize > largestSize) {
+        largestSize = componentSize; // atualiza o tamanho do maior componente
+      }
+    }
+  }
+  return largestSize; // Retorna o tamanho maximo de componentes conectados num grafo
+}*/
+
 void dfsTopological(int v, std::vector<bool>& visited, std::list<int>& order) {
     visited[v] = true; // Mark the current node as visited
 
@@ -216,6 +274,19 @@ void dfsTopological(int v, std::vector<bool>& visited, std::list<int>& order) {
     // Add the node to the front of the order after all its descendants
     order.push_front(v);
 }
+
+/*void dfsTopological(int v, std::vector<bool>& visited, std::list<int>&order) {
+  visited[v] = true; // marca todos os nós como visitados
+  for (const auto& edge : nodes[v].adj) { // visita os nós adjacentes
+    int neighbor = edge.dest;
+    if (!visited[neighbor]) {
+      dfsTopological(neighbor, visited, order);
+    }
+  }
+  order.push_front(v); // Adiciona o nó à frente da ordem e depois o seu descendente
+}*/
+
+
 // Função para realizar a ordenação topologica de um grafo orientado DAG
 std::list<int> topologicalSorting() {
     std::vector<bool> visited(n + 1, false); // Track visited nodes DFS
@@ -231,6 +302,17 @@ std::list<int> topologicalSorting() {
 
     return order; // Return the topological order
 }
+
+/*std::list<int> topologicalSorting() {
+  std::vector<bool> visited(n+1, false); // conta os nós visitados
+  std::list<int> order; // ordena topologicamente
+  for (int i = 1; i <= n; i++) { // utiliza um dfs em todos os nós
+    if (!visited[i]) { // os nós iniciais são os que ainda não foram visitados
+      dfsTopological(i, visited, order);
+    }
+  }
+  return order; // retorna os nós do grafos ordenados topologicamente
+}*/
 
 // Função para detectar ciclos em um grafo direcionado usando DFS.
 bool dfsCycleDetection(int v, std::vector<int>& color) {
@@ -256,6 +338,21 @@ bool dfsCycleDetection(int v, std::vector<int>& color) {
     return false;
 }
 
+/*bool dfsCycleDetection(int v, std::vector<int>& color) {
+  color[v] = 1; //  marca o nó atual a cinzento
+  for (const auto& edge : nodes[v].adj) { // itera por todos os nós vizinhos do atual
+    int neighbor = edge.dest; // obtém o nó vizinho
+    if (color[neighbor] == 1) return true; // encontra um ciclo
+    if (color[neighbor] == 0) {
+      if (dfsCycleDetection(neighbor, color)) { // verifica o nó vizinho
+        return true;
+      }
+    }
+  }
+  color[v] = 2; // marca os nós visitados a preto
+  return false;
+}*/
+
 bool hasCycle() {
     std::vector<int> color(n + 1, 0); // 0: unvisited, 1: visiting, 2: visited
 
@@ -271,6 +368,16 @@ bool hasCycle() {
     return false; // No cycles found
 }
 
+/*bool hasCycle() {
+  std::vector<int> color(n+1, 0);
+  for (int i = 1; i <= n; i++) { // corre o dfs em todos os nós não visitados
+     if (dfsCycleDetection(i,color)) {
+        return true; // deteta um ciclo
+     }
+  }
+  return false; // não encontrou ciclos
+}
+*/
 
 bool dfsCheckBipartite(int v, std::vector<int>& color, int currentColor) {
     color[v] = currentColor; // Color the current node
@@ -293,6 +400,22 @@ bool dfsCheckBipartite(int v, std::vector<int>& color, int currentColor) {
     return true; // No conflicts found
 }
 
+/*bool dfsCheckBipartite(int v, std::vector<int>& color, int currentColor) {
+  color[v] = currentColor; // colorir o nó atual
+  for (const auto& edge : nodes[v].adj) { // atravessar os vizinhos
+    int neighbor = edge.dest;
+    if (color[neighbor] == -1) {
+      // se o vizinho for não visitado, colorir com a cor oposta
+      if (!dfsCheckBipartite(neighbor, color, 1-currentColor)) {
+        return false;
+      }
+    } else if (color[neighbor] == currentColor) { // Se o vizinho já estiver colorido, não há biparity
+      return false;
+    }
+  }
+  return true; // Nenhum conflito encontrado
+}*/
+
 bool isBipartite() {
     std::vector<int> color(n + 1, -1); // -1 means unvisited; 0 and 1 are the two colors
 
@@ -307,6 +430,18 @@ bool isBipartite() {
 
     return true; // The graph is bipartite
 }
+
+/*bool isBipartite() {
+  std::vector<int> color(n+1,-1); // -1 significa não visitado, 0 e 1 são as duas cores
+  for (int i = 1; i <= n; i++) { // começa o dfs por cada nó não visitado(grafo conectado)
+    if (color[i] == -1) {
+      if (!dfsCheckBipartite(i,color,0)) {
+        return false; // se algum componente não for bipartite, o grafo é não bipartido
+      }
+    }
+  }
+  return true; // o grafo é bipartido 
+}*/
 
 
 
